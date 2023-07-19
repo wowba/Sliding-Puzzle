@@ -4,6 +4,11 @@ body {
   align-items: center;
 }
 
+a {
+  position: absolute;
+  top: 550px;
+}
+
 #board {
   position: relative;
 }
