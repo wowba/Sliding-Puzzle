@@ -50,7 +50,6 @@ class Block {
             }
           }
         }
-        // this.GAMESTARTED = false
         startButton.disabled = false
         startButton.classList.remove("disabled")
         startButton.innerText = "Start"
@@ -89,7 +88,7 @@ class Block {
           this.move()
           isMoved = true
           break
-        }
+        }z
       }
     }
     if (!isMoved) this.shake()
