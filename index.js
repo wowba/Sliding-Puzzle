@@ -1,3 +1,9 @@
+import Timer from "./Timer.js"
+
+function sleep(sec) {
+  return new Promise(resolve => setTimeout(resolve, sec * 1000));
+}
+
 /*
 [0, 0] [0, 1] [0, 2]
 [1, 0] [1, 1] [1, 2]
@@ -14,6 +20,9 @@ const createBoard = () => {
   return board
 }
 const board = createBoard()
+
+// 타이머 객체
+const timer = new Timer()
 
 // Block 객체
 class Block {
@@ -33,11 +42,11 @@ class Block {
 
   move() {
     const blockDiv = document.getElementById(this.number)
-    blockDiv.style.top = (this.x + 1) * 100 + "px"
+    blockDiv.style.top = (this.x + 0.2) * 100 + "px"
     blockDiv.style.left = (-150 + (this.y * 100)) + "px"
   }
 
-  checkAnswer() {
+  async checkAnswer() {
     let isAnswer = true
     let number = 1
     for (let i = 0; i < 3; i++) {
@@ -56,9 +65,23 @@ class Block {
     
     if (isAnswer) {
       setTimeout(() => {
-        alert("승리~!")
+        timer.stop()
         GAMESTARTED = false
+        startButton.disabled = false
+        startButton.classList.remove("disabled")
+        startButton.innerText = "Start"
       }, 1000)
+      await sleep(1)
+      const blocks = document.getElementsByClassName("block")
+      for (const block of blocks) {
+        setTimeout(() => {
+          block.classList.add("success")
+        }, 200)
+        setTimeout(() => {
+          block.classList.remove("success")
+        }, 1200)
+        await sleep(0.05)
+      }
     }
   }
 
@@ -126,10 +149,11 @@ const mixPosition = () => {
   const intervalId = setInterval(() => {
     const index = Math.floor(Math.random() * 8)
     blocks[index].click()
-  }, 5)
+  }, 1)
   setTimeout(() => {
     clearInterval(intervalId)
     GAMESTARTED = true
+    timer.start()
   }, 5000)
 }
 
@@ -137,4 +161,12 @@ const mixPosition = () => {
 const startButton = document.getElementById("start")
 startButton.addEventListener("click", () => {
   mixPosition()
+  startButton.disabled = true
+  startButton.innerHTML = "Mixing..."  
+  startButton.classList.add("disabled")
+  timer.reset()
+  setTimeout(() => {
+    startButton.innerHTML = "Ticking!"
+  }, 5000)
 })
+

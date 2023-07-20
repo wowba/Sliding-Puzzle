@@ -4,9 +4,74 @@ body {
   align-items: center;
 }
 
+h1 {
+  font-weight: 900;
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
 a {
   position: absolute;
-  top: 550px;
+  top: 615px;
+  font-size: 20px
+}
+
+button {
+  position: absolute;
+  top: 510px;
+  padding : 20px 70px;
+  border: 2px solid black;
+  border-radius: 30px;
+  font-size: 30px;
+  width: 260px;
+  background-color: white;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button.disabled:hover {
+  cursor: not-allowed;
+}
+
+button:disabled {
+  background-color: white;
+  color: black;
+}
+
+#timer {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  top: 430px;
+  font-weight: 400;
+  font-style: Italic;
+}
+
+#timer > #min {
+  display: block;
+  font-size: 58px;
+  width: 75px;
+  text-align:center;
+}
+#timer > #sec {
+  display: block;
+  font-size: 58px;
+  width: 75px;
+  text-align:center;
+}
+#timer > #msec {
+  display: block;
+  font-size: 38px;
+  width: 50px;
+  margin-bottom: 6px;
+  text-align:center;
+}
+#timer > .dot {
+  display: block;
+  font-size: 50px;
+  margin-bottom: 6px;
 }
 
 #board {
@@ -21,11 +86,18 @@ a {
   border-radius: 20px;
   transition: top 1s, left 1s;
   text-align: center;
-  line-height: 100px
+  line-height: 100px;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .block.shake {
   animation: shake 0.1s infinite;
+}
+
+.block.success {
+  animation: success 0.5s;
 }
 
 @keyframes shake {
@@ -43,5 +115,17 @@ a {
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+
+@keyframes success {
+  0% {
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
