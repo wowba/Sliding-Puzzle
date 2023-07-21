@@ -13,7 +13,7 @@ onmessage = function (e) {
         this.min += 1
         this.sec = 0
       }
-      const result = [this.min, this.sec, this.msec, intervalId]
+      const result = [this.min, this.sec, this.msec]
       postMessage(result)
     }, 10)
   }
