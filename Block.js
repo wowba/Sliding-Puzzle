@@ -88,7 +88,7 @@ class Block {
           this.move()
           isMoved = true
           break
-        }z
+        }
       }
     }
     if (!isMoved) this.shake()
