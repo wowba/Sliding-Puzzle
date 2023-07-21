@@ -5,7 +5,6 @@ class Timer {
     this.min = 0
     this.sec = 0
     this.msec = 0
-    this.setIntervalId
   }
 
   start() {
