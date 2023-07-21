@@ -1,11 +1,12 @@
 const startButton = document.getElementById("start")
 
 class Block {
-  constructor (x, y, number, timer) {
+  constructor (x, y, number, timer, BOARD) {
     this.x = x
     this.y = y
     this.number = number
     this.timer = timer
+    this.BOARD = BOARD
     this.GAMESTARTED = false
   }
 
@@ -23,7 +24,7 @@ class Block {
     blockDiv.style.left = (-150 + (this.y * 100)) + "px"
   }
 
-  async checkAnswer(BOARD) {
+  async checkAnswer() {
     let isAnswer = true
     let number = 1
     for (let i = 0; i < 3; i++) {
@@ -31,7 +32,7 @@ class Block {
         if (number === 9) {
           break
         }
-        if (BOARD[i][j] === null || BOARD[i][j].number !== number++) {
+        if (this.BOARD[i][j] === null || this.BOARD[i][j].number !== number++) {
           isAnswer = false
           break
         }
@@ -45,7 +46,7 @@ class Block {
         for (let i = 0; i < 3; i++) {
           for (let j = 0; j < 3; j++) {
             if (count !== 9) {
-              BOARD[i][j].GAMESTARTED = false
+              this.BOARD[i][j].GAMESTARTED = false
               count++
             }
           }
@@ -68,7 +69,7 @@ class Block {
     }
   }
 
-  click(BOARD) {
+  click() {
     // 주변 블럭을 확인하여 빈 칸이 있을 경우 이동
     // 없을 경우 흔들리는 효과
     const dx = [1, -1, 0, 0]
@@ -80,9 +81,9 @@ class Block {
       if (nx < 0 || nx > 2 || ny < 0 || ny > 2) {
         continue
       } else {
-        if (BOARD[nx][ny] === null) {
-          BOARD[nx][ny] = BOARD[this.x][this.y]
-          BOARD[this.x][this.y] = null
+        if (this.BOARD[nx][ny] === null) {
+          this.BOARD[nx][ny] = this.BOARD[this.x][this.y]
+          this.BOARD[this.x][this.y] = null
           this.x = nx
           this.y = ny
           this.move()
@@ -92,17 +93,17 @@ class Block {
       }
     }
     if (!isMoved) this.shake()
-    if (this.GAMESTARTED) this.checkAnswer(BOARD)
+    if (this.GAMESTARTED) this.checkAnswer()
   }
 
   // render 시 index.js에서 board를 인자로 받아와 모든 Block 인스턴스가 공유할 수 있도록 구현.
-  render(BOARD) {
+  render() {
     const blockDiv = document.createElement("div")
     blockDiv.id = this.number
     blockDiv.classList.add("block")
     blockDiv.innerText = this.number
     blockDiv.addEventListener("click", () => {
-      this.click(BOARD)
+      this.click()
     })
 
     const boardDiv = document.getElementById("board")
