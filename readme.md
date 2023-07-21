@@ -11,3 +11,4 @@ made by wowba
 
 - 2023.07.21
   - 1.3 Block 클래스 모듈로 분리.
+  - 1.4 Timer 클래스에서 사용할 worker.js 추가.

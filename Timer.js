@@ -1,3 +1,5 @@
+const worker = new Worker('worker.js')
+
 class Timer {
   constructor() {
     this.min = 0
@@ -7,22 +9,18 @@ class Timer {
   }
 
   start() {
-    this.setIntervalId = setInterval(() => {
-      this.msec += 10
-      if (this.msec === 1000) {
-        this.sec += 1
-        this.msec = 0
-      }
-      if (this.sec === 60) {
-        this.min += 1
-        this.sec = 0
-      }
+    worker.postMessage("start")
+    worker.onmessage = (e) => {
+      let [min, sec, msec] = e.data
+      this.min = min
+      this.sec = sec
+      this.msec = msec
       this.render()
-    }, 10)
+    }
   }
 
   stop() {
-    clearInterval(this.setIntervalId)
+    worker.postMessage("stop")
   }
 
   reset() {
