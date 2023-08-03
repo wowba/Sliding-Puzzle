@@ -1,6 +1,7 @@
 # Sliding Puzzle
-[Play Link](https://sliding-puzzle-gamma.vercel.app/)
-/ made by wowba
+[Play Link](https://sliding-puzzle-gamma.vercel.app/)  
+[Chrome Extension](https://chrome.google.com/webstore/detail/sliding-puzzle/olfemikngkfdngieiokahplpghddjjam/related?hl=ko)  
+made by wowba
 ## Stack
 <p align="left">
   <img src="https://img.shields.io/badge/Html-E34F26?style=for-the-badge&logo=html5&logoColor=white">
@@ -23,4 +24,7 @@
   - 1.4 Timer 클래스에서 사용할 웹 워커 worker.js 추가.
 
 - 2023.08.01
-  - chrome extension 배포용 폴더 생성 / 검토 대기중...
+  - chrome extension 배포용 폴더 생성
+
+- 2023.08.02 
+  - [크롬 익스텐션 배포](https://chrome.google.com/webstore/detail/sliding-puzzle/olfemikngkfdngieiokahplpghddjjam/related?hl=ko)
