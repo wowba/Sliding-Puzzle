@@ -1,6 +1,6 @@
 # Sliding Puzzle
 [Play Link](https://sliding-puzzle-gamma.vercel.app/)  
-[Chrome Extension](https://chrome.google.com/webstore/detail/sliding-puzzle/olfemikngkfdngieiokahplpghddjjam/related?hl=ko)  
+[Chrome Extension](https://chromewebstore.google.com/detail/sliding-puzzle/olfemikngkfdngieiokahplpghddjjam)  
 made by wowba
 ## Stack
 <p align="left">
@@ -27,4 +27,5 @@ made by wowba
   - chrome extension 배포용 폴더 생성
 
 - 2023.08.02 
-  - [크롬 익스텐션 배포](https://chrome.google.com/webstore/detail/sliding-puzzle/olfemikngkfdngieiokahplpghddjjam/related?hl=ko)
+  - [크롬 익스텐션 배포](https://chromewebstore.google.com/detail/sliding-puzzle/olfemikngkfdngieiokahplpghddjjam)
+    
